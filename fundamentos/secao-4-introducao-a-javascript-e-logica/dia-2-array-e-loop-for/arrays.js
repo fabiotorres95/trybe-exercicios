@@ -17,7 +17,7 @@ let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27]; //array para todos os exerc√
 // for (let number of numbers) {
 //     sum  += number;
 // } 
-// console.log(sum / numbers.length)
+// console.log(sum / numbers.length);
 
 // Ponto 4
 // let sum = 0;
@@ -51,7 +51,7 @@ let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27]; //array para todos os exerc√
 // if (odd == 0) {
 //     console.log('nenhum valor √≠mpar encontrado');
 // } else {
-//     console.log(odd)
+//     console.log(odd);
 // }
 
 // Ponto 7
@@ -62,3 +62,14 @@ let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27]; //array para todos os exerc√
 //     }
 // }
 // console.log(smaller);
+
+//Pontos 8 e 9
+// let newArray = [];
+// for (let index = 1; index <= 25; index += 1) {
+//     newArray.push(index);
+// }
+// console.log(newArray);
+
+// for (let index = 0; index < newArray.length; index += 1) {
+//     console.log(newArray[index] / 2);
+// }
