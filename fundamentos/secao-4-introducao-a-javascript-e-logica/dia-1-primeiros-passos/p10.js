@@ -1,4 +1,5 @@
-let piece = '' // input do usuário
+let piece = 'Knight'; // input do usuário
+piece = piece.toLowerCase();
 
 switch(piece) {
     case 'pawn': 
