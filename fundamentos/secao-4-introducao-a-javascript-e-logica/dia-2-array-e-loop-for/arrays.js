@@ -53,3 +53,12 @@ let numbers = [5, 9, 3, 19, 70, 8, 100, 2, 35, 27]; //array para todos os exerc√
 // } else {
 //     console.log(odd)
 // }
+
+// Ponto 7
+// let smaller = numbers[0];
+// for (let index = 1; index < numbers.length; index += 1) {
+//     if (smaller > numbers[index]) {
+//         smaller = numbers[index];
+//     }
+// }
+// console.log(smaller);
