@@ -19,3 +19,19 @@ let newInfo = {
     nota: 'O último MacPatinhas',
     recorrente: 'Sim',
 }
+
+for (let key in info) {
+    if (key === 'recorrente') {
+        if (info[key] === newInfo[key]) {
+            console.log('Ambos recorrentes');
+            break;
+        } else if (info[key] === 'Sim') {
+            console.log('Só o primeiro é recorrente');
+            break;
+        } else {
+            console.log('Só o segundo é recorrente');
+            break;
+        }
+    }
+    console.log(info[key] + ' e ' + newInfo[key]);
+}
