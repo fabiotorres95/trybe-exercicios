@@ -1,0 +1,5 @@
+Quais são os possíveis desafios ao realizar alterações na arquitetura de um sistema que já está em produção?
+
+R: Dificuldade ao ler o código de terceiros, garantir que não ocorrerá erros em outras partes do sistema que já estão desenvolvidas, verificar se a segurança do sistema não será comprometida ou se a performance diminuirá.
+
+G: Alguns possíveis desafios ao realizar alterações na arquitetura de um sistema em produção incluem a dificuldade de garantir a compatibilidade com os componentes existentes, o risco de introduzir erros ou falhas no sistema e o custo envolvido na implementação dessas alterações sem interromper o funcionamento do sistema.

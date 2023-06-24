@@ -1,0 +1,5 @@
+Quais são os principais objetivos da arquitetura de software?
+
+R: Garantir que um sistema seja escalável, robusto, seguro e que tenha boa performance.
+
+G: Os principais objetivos da arquitetura de software são garantir a escalabilidade, segurança, robustez e performance do sistema, além de possibilitar modificações e atualizações futuras de forma fácil e eficiente.
