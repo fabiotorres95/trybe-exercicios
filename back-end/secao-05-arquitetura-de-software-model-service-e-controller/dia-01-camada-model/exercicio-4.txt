@@ -1,3 +1,5 @@
 O que é a camada de model na arquitetura em camadas de software?
 
-R:
+R: É a camada responsável por se comunicar com o banco de dados e criar, ler, atualizar ou deletar os dados de acordo com as requisições feitas pelo usuário.
+
+G: A camada de model é responsável por armazenar, alterar e recuperar os dados do sistema. Ela é a camada mais próxima do banco de dados e é responsável por realizar as operações de CRUD (Create, Read, Update e Delete) no banco de dados.

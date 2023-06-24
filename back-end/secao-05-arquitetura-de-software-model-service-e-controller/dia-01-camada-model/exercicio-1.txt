@@ -1,3 +1,5 @@
 Qual é a importância da arquitetura de software no desenvolvimento de um sistema?
 
-R: 
+R: Arquitetura de software é crucial para a construção de um sistema complexo, com várias camadas e com a colaboração de diversas pessoas, pois garante que padrões e regras sejam seguidas para que o código seja legível para todos que trabalham no sistema, o que garante uma melhor manutenção do mesmo.
+
+G: A arquitetura de software é crucial no desenvolvimento de um sistema, pois define a estrutura básica do software, como seus componentes interagem entre si e garante que o sistema seja escalável, seguro, robusto e tenha boa performance.
