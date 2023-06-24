@@ -3,3 +3,28 @@ Crie a função na camada de model responsável por deletar uma pessoa passageir
 Implemente a rota DELETE /passenger/:id para deletar uma pessoa passageira. Ao remover deve retornar o status HTTP 204.
 
 Utilize a partir da branch 1-live-lecture do repositório do Trybecar para realizar os exercícios.
+
+*em trybecar/src/models/passenger.model.js:
+
+const remove = async (passengerId) => {
+  await connection.execute('DELETE FROM passengers WHERE id = ?', [passengerId]);
+
+  return passengerId;
+};
+
+module.exports = {
+  findAll,
+  findById,
+  insert,
+  update,
+  remove,
+};
+
+*em trybecar/src/app.js:
+
+app.delete('/passengers/:id', async (req, res) => {
+  const { id } = req.params;
+  await passengerModel.remove(id);
+
+  return res.status(204).end();
+});
