@@ -1,0 +1,3 @@
+O que é a camada de model na arquitetura em camadas de software?
+
+R:

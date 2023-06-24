@@ -1,0 +1,3 @@
+Quais são os possíveis desafios ao realizar alterações na arquitetura de um sistema que já está em produção?
+
+R:
