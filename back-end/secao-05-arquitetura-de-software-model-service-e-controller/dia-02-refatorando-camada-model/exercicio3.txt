@@ -1,0 +1,81 @@
+-- em trybecar/src/models/driver.model.js --
+
+const {
+  getFormattedColumnNames,
+  getFormattedPlaceholders,
+} = require('../utils/generateFormattedQuery');
+
+const insert = async (newDriver) => {
+  const columns = getFormattedColumnNames(newDriver);
+  const placeholders = getFormattedPlaceholders(newDriver); 
+  const query = `INSERT INTO drivers (${columns}) VALUES (${placeholders})`;
+
+  const insertId = await connection.execute(query, [...Object.values(newDriver)]);
+
+  return insertId;
+};
+
+module.exports = {
+  findAll,
+  findById,
+  insert,
+};
+
+-- em trybecar/tests/unit/mocks/driver.mock.js --
+
+const insertIdFromDB = { insertId: 6 }
+
+const insertIdFromMock = { insertId: 6 }
+
+module.exports = {
+  driversFromDB,
+  driversFromModel,
+  driverByIdFromDB,
+  driverByIdFromMock,
+  insertIdFromDB,
+  insertIdFromMock,
+}
+
+-- em trybecar/tests/unit/models/driver.model.test.js --
+
+const { 
+  driversFromDB, 
+  driversFromModel, 
+  driverByIdFromDB, 
+  driverByIdFromMock,
+  insertIdFromDB,
+  insertIdFromMock,
+ } = require('../mocks/driver.mock');
+
+describe('Realizando testes - DRIVER MODEL:', function () {
+  it('Recuperando todos os motoristas da lista', async function () {
+    sinon.stub(connection, 'execute').resolves(driversFromDB);
+
+    const allDrivers = await driverModel.findAll();
+
+    expect(allDrivers).to.be.an('array');
+    expect(allDrivers).to.be.deep.equal(driversFromModel);
+  });
+
+  it('Recuperando um motorista pelo id', async function () {
+    sinon.stub(connection, 'execute').resolves(driverByIdFromDB);
+
+    const driver = await driverModel.findById(4);
+
+    expect(driver).to.be.an('object');
+    expect(driver).to.deep.equal(driverByIdFromMock);
+  });
+
+  it('Inserindo um motorista novo', async function () {
+    sinon.stub(connection, 'execute').resolves(insertIdFromDB);
+
+    const newId = await driverModel.insert({ name: 'Fábio Torres' });
+
+    expect(newId).to.be.an('object');
+    expect(newId).to.deep.equal(insertIdFromMock);
+  });
+
+  afterEach(function () {
+    sinon.restore();
+  });
+});
