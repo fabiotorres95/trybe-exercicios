@@ -1,0 +1,64 @@
+-- em trybecar/src/models/driver.model.js --
+
+const findById = async (driverId) => {
+  const result = await connection.execute('SELECT * FROM drivers WHERE id = ?', [driverId]);
+
+  return camelize(result);
+};
+
+module.exports = {
+  findAll,
+  findById,
+};
+
+-- em trybecar/tests/unit/mocks/driver.mock.js --
+
+const driverByIdFromDB = {
+  id: 4,
+  name: 'Samara Granjeiro',
+}
+
+const driverByIdFromMock = {
+  id: 4,
+  name: 'Samara Granjeiro',
+}
+
+module.exports = {
+  driversFromDB,
+  driversFromModel,
+  driverByIdFromDB,
+  driverByIdFromMock,
+}
+
+-- em trybecar/tests/unit/models/driver.model.test.js --
+
+const { 
+  driversFromDB, 
+  driversFromModel, 
+  driverByIdFromDB, 
+  driverByIdFromMock,
+ } = require('../mocks/driver.mock');
+
+describe('Realizando testes - DRIVER MODEL:', function () {
+  it('Recuperando todos os motoristas da lista', async function () {
+    sinon.stub(connection, 'execute').resolves(driversFromDB);
+
+    const allDrivers = await driverModel.findAll();
+
+    expect(allDrivers).to.be.an('array');
+    expect(allDrivers).to.be.deep.equal(driversFromModel);
+  });
+
+  it('Recuperando um motorista pelo id', async function () {
+    sinon.stub(connection, 'execute').resolves(driverByIdFromDB);
+
+    const driver = await driverModel.findById(4);
+
+    expect(driver).to.be.an('object');
+    expect(driver).to.deep.equal(driverByIdFromMock);
+  });
+
+  afterEach(function () {
+    sinon.restore();
+  });
+});

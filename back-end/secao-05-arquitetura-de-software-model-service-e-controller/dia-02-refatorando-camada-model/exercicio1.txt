@@ -1,0 +1,75 @@
+-- novo arquivo trybecar/src/models/driver.model.js --
+
+const camelize = require('camelize');
+const connection = require('./connection');
+
+const findAll = async () => {
+  const result = await connection.execute(
+    'SELECT * FROM drivers',
+  );
+
+  return camelize(result);
+};
+
+module.exports = {
+  findAll,
+};
+
+-- em trybecar/src/models/index.js --
+
+const passengerModel = require('./passenger.model');
+const travelModel = require('./travel.model');
+const driverModel = require('./driver.model');
+
+module.exports = {
+  passengerModel,
+  travelModel,
+  driverModel,
+};
+
+-- novo arquivo trybecar/tests/unit/mocks/driver.mock.js --
+
+const driversFromDB = [
+    { id: 1, name: 'Liana Cisneiros' },
+    { id: 2, name: 'Fábio Frazão' },
+    { id: 3, name: 'Anastácia Bicalho' },
+    { id: 4, name: 'Samara Granjeiro' },
+    { id: 5, name: 'Levi Teixeira' },
+]
+
+
+const driversFromModel = [
+    { id: 1, name: 'Liana Cisneiros' },
+    { id: 2, name: 'Fábio Frazão' },
+    { id: 3, name: 'Anastácia Bicalho' },
+    { id: 4, name: 'Samara Granjeiro' },
+    { id: 5, name: 'Levi Teixeira' },
+]
+
+module.exports = {
+  driversFromDB,
+  driversFromModel,
+}
+
+-- novo arquivo trybecar/tests/unit/models/driver.model.test.js --
+
+const sinon = require('sinon');
+const { expect } = require('chai');
+const connection = require('../../../src/models/connection');
+const { driverModel } = require('../../../src/models');
+const { driversFromDB, driversFromModel } = require('../mocks/driver.mock');
+
+describe('Realizando testes - DRIVER MODEL:', function () {
+  it('Recuperando todos os motoristas da lista', async function () {
+    sinon.stub(connection, 'execute').resolves(driversFromDB);
+
+    const allDrivers = await driverModel.findAll();
+
+    expect(allDrivers).to.be.an('array');
+    expect(allDrivers).to.be.deep.equal(driversFromModel);
+  });
+
+  afterEach(function () {
+    sinon.restore();
+  });
+});
