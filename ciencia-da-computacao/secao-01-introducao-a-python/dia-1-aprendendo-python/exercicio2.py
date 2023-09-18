@@ -1,0 +1,1 @@
+# Calcule a média aritmética dos valores contidos em uma lista.
