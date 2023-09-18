@@ -8,3 +8,23 @@
 # *****
 
 # Dica: Python sabe multiplicar sequências! Por exemplo, 3 * 'bla' resulta em blablabla. Isso se aplica a listas também, caso você precise.
+
+def squareMaker(n):
+  if n <= 1:
+    print('erro: o valor deve ser maior que 1')
+    return
+
+  index = 1
+  while index <= n:
+    print('*' * n)
+    index += 1
+
+user_input = input('digite um número maior que 1: ')
+if not user_input.isnumeric():
+  print('erro: não foi digitado um número')
+else:
+  squareMaker(int(user_input))
+
+  
+
+
