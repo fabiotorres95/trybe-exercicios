@@ -6,23 +6,29 @@
 import random
 
 words_list = ["ABACAXI", "COMPUTADOR", "LOUCURA", "JABUTICABA", "ESPINGARDA"]
-goal = random.choice(words_list)
-print(''.join(random.sample(goal, len(goal))))
 
-user_input = ''
-tries = 1
-while tries <= 3:
+def scramble_game(words_list):
+  goal = random.choice(words_list)
+  print(''.join(random.sample(goal, len(goal))))
+
+  user_input = ''
+  tries = 1
+  while tries <= 3:
+    print("")
+    print(f"Tentativa {tries}")
+    user_input = input("Adivinhe a palavra embaralhada: ").upper()
+
+    if user_input == goal:
+      print("VOCÊ ACERTOU! PARABÉNS!")
+      break
+
+    print("Palavra errada!")
+
+    tries += 1
+
   print("")
-  print(f"Tentativa {tries}")
-  user_input = input("Adivinhe a palavra embaralhada: ").upper()
+  print(f"A palavra era: {goal}")
+  print("FIM DE JOGO")
 
-  if user_input == goal:
-    print("VOCÊ ACERTOU! PARABÉNS!")
-    break
-
-  print("Palavra errada!")
-
-  tries += 1
-
-print("")
-print("FIM DE JOGO")
+if __name__ == '__main__':
+  scramble_game(words_list)
