@@ -7,7 +7,7 @@ class LinkedList:
         self.__length = 0
 
     def __str__(self):
-        return f"LinkedList(value={self.head_value}, length={self.__length})"
+        return f'LinkedList(len={self.__length}, value={self.head_value})'
 
     def __len__(self):
         return self.__length
